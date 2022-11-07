@@ -7,7 +7,7 @@ public class PlayerController : MonoBehaviour
     public float maxSpeed;
     public float jumpPower;
 
-    public Vector2 boxCastSize = new Vector2(0.5f, 0.05f);
+    public Vector2 boxCastSize = new Vector2(0.6f, 0.05f);
     public float boxCastMaxDistance = 1.0f;
 
     Rigidbody2D rigid;

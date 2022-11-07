@@ -1205,7 +1205,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxSpeed: 5
   jumpPower: 20
-  boxCastSize: {x: 0.5, y: 0.05}
+  boxCastSize: {x: 0.6, y: 0.05}
   boxCastMaxDistance: 1
 --- !u!70 &550124926
 CapsuleCollider2D:
