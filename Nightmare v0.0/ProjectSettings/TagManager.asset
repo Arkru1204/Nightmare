@@ -13,7 +13,7 @@ TagManager:
   - UI
   - Map
   - Player
-  - Monster
+  - Enemy
   - 
   - 
   - 
@@ -50,7 +50,7 @@ TagManager:
   - name: Object
     uniqueID: 673751499
     locked: 0
-  - name: Monster
+  - name: Enemy
     uniqueID: 2345070977
     locked: 0
   - name: Player
