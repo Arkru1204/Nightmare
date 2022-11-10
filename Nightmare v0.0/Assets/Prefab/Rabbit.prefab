@@ -12,7 +12,8 @@ GameObject:
   - component: {fileID: 8051937912444131707}
   - component: {fileID: 8051937912444131706}
   - component: {fileID: 8051937912444131705}
-  - component: {fileID: 8051937912444131704}
+  - component: {fileID: 8796045698512584993}
+  - component: {fileID: 538932391789834033}
   m_Layer: 8
   m_Name: Rabbit
   m_TagString: Untagged
@@ -27,7 +28,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8051937912444131710}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -19.48, y: 5.55, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -73,8 +74,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: -1949896319
+  m_SortingLayer: 4
   m_SortingOrder: 0
   m_Sprite: {fileID: -140304066, guid: 867db02d273d849418dac63c986fb86c, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -100,7 +101,7 @@ Animator:
   m_Controller: {fileID: 9100000, guid: a4e30ddd313ecd741b7957c9576ac5e4, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
-  m_ApplyRootMotion: 0
+  m_ApplyRootMotion: 1
   m_LinearVelocityBlending: 0
   m_StabilizeFeet: 0
   m_WarningMessage: 
@@ -123,7 +124,7 @@ CapsuleCollider2D:
   m_Offset: {x: -0.012346268, y: 0.020578384}
   m_Size: {x: 1.3539467, y: 1.633812}
   m_Direction: 0
---- !u!50 &8051937912444131704
+--- !u!50 &8796045698512584993
 Rigidbody2D:
   serializedVersion: 4
   m_ObjectHideFlags: 0
@@ -144,3 +145,16 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
+--- !u!114 &538932391789834033
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8051937912444131710}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a585b2ed03b572145aac3f40c36f70f6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  nextMove: 0
