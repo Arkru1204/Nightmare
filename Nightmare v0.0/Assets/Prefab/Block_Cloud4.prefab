@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 6912615688190321506}
   - component: {fileID: 6912615688190321507}
   - component: {fileID: 6912615688190321504}
-  m_Layer: 6
+  m_Layer: 7
   m_Name: Block_Cloud4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
