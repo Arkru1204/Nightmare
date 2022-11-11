@@ -9,8 +9,10 @@ public class PlayerController : MonoBehaviour
     public float bouncPower = 10;
     public float invulnTIme = 0.8f;
 
-    public Vector2 boxCastSize = new Vector2(0.6f, 0.05f);
-    public float boxCastMaxDistance = 1.0f;
+    bool isHit = false;
+
+    Vector2 boxCastSize = new Vector2(0.6f, 0.05f);
+    float boxCastMaxDistance = 1.0f;
 
     Rigidbody2D rigid;
     SpriteRenderer spriteRenderer;
@@ -25,37 +27,44 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
-        // 점프
-        if (Input.GetButtonDown("Jump") && !anim.GetBool("isJumping"))
+        if (!isHit)
         {
-            rigid.AddForce(Vector2.up * jumpPower, ForceMode2D.Impulse);
-            anim.SetBool("isJumping", true);
+            // 점프 (점프를 누르고, 점프 중이 아니고, 피격 상태가 아닐 때)
+            if (Input.GetButtonDown("Jump") && !anim.GetBool("isJumping") && !IsInvoking("reRotate"))
+            {
+                //rigid.velocity = new Vector2(rigid.velocity.x, 0); // 점프 속도 초기화
+                rigid.AddForce(Vector2.up * jumpPower, ForceMode2D.Impulse);
+                anim.SetBool("isJumping", true);
+            }
+
+            // 움직임 멈춤
+            if (Input.GetButtonUp("Horizontal"))
+                rigid.velocity = new Vector2(rigid.velocity.normalized.x * 0.0000001f, rigid.velocity.y);
+
+            // 방향 전환
+            if (Input.GetButton("Horizontal"))
+                spriteRenderer.flipX = Input.GetAxisRaw("Horizontal") == -1;
+
+            // 미끄러짐 방지
+            if (!(Input.GetButton("Horizontal")))
+                rigid.velocity = new Vector2(0, rigid.velocity.y);
         }
-
-        // 움직임 멈춤
-        if (Input.GetButtonUp("Horizontal"))
-            rigid.velocity = new Vector2(rigid.velocity.normalized.x * 0.0000001f, rigid.velocity.y);
-
-        // 방향 전환
-        if (Input.GetButton("Horizontal"))
-            spriteRenderer.flipX = Input.GetAxisRaw("Horizontal") == -1;
 
         // 달리기 애니메이션
         if (Mathf.Abs(rigid.velocity.x) < 0.3) // 절댓값 설정
             anim.SetBool("isRunning", false);
         else
             anim.SetBool("isRunning", true);
-
-        // 미끄러짐 방지
-        if (!(Input.GetButton("Horizontal")))
-            rigid.velocity = new Vector2(0, rigid.velocity.y);
     }
 
     void FixedUpdate()
     {
-        // 움직임 조작
-        float h = Input.GetAxisRaw("Horizontal"); // 횡으로 키를 누르면
-        rigid.AddForce(Vector2.right * h, ForceMode2D.Impulse); // 이동한다
+        if (!isHit)
+        {
+            // 움직임 조작
+            float h = Input.GetAxisRaw("Horizontal"); // 횡으로 키를 누르면
+            rigid.AddForce(Vector2.right * h, ForceMode2D.Impulse); // 이동한다
+        }
 
         // 최고 속도
         if (rigid.velocity.x > maxSpeed) // 오른족
@@ -82,7 +91,7 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    //void OnDrawGizmos()
+    //void OnDrawGizmos() // 사각 레이 기즈모
     //{
     //    RaycastHit2D raycastHit = Physics2D.BoxCast(transform.position, boxCastSize, 0f, Vector2.down, boxCastMaxDistance, LayerMask.GetMask("Map"));
 
@@ -109,8 +118,8 @@ public class PlayerController : MonoBehaviour
     void onHit(Vector2 targetPos)
     {
         gameObject.layer = 9; // 플레이어의 Layer 변경 (무적)
-
         spriteRenderer.color = new Color(1, 1, 1, 0.4f); // 피격당했을 때 색 변경
+        isHit = true;
 
         int dir = transform.position.x - targetPos.x > 0 ? 1 : -1; // 피격시 튕겨나가는 방향 결정
         rigid.AddForce(new Vector2(dir, 1) * bouncPower, ForceMode2D.Impulse); // 튕겨나가기
@@ -125,12 +134,12 @@ public class PlayerController : MonoBehaviour
     void offHit()
     {
         gameObject.layer = 8; // Layer 변경
-
         spriteRenderer.color = new Color(1, 1, 1, 1f); // 색 변경
     }
 
-    void reRotate()
+    void reRotate() // 회전 초기화, 조작 불가 기간
     {
         this.transform.rotation = Quaternion.Euler(0, 0, 0);
+        isHit = false;
     }
 }
