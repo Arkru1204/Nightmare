@@ -5,6 +5,7 @@ using UnityEngine;
 public class EnemyMove : MonoBehaviour
 {
     public int nextMove; // 행동 지표를 결정할 변수 하나 생성
+    public float maxSpeed = 2.5f;
 
     Rigidbody2D rigid;
     Animator anim;
@@ -21,7 +22,7 @@ public class EnemyMove : MonoBehaviour
 
     void FixedUpdate()
     {
-        rigid.velocity = new Vector2(nextMove, rigid.velocity.y);
+        rigid.velocity = new Vector2(nextMove * maxSpeed, rigid.velocity.y);
 
         //지형 체크
         Vector2 frontVec = new Vector2(rigid.position.x + nextMove * 0.4f, rigid.position.y);
@@ -42,7 +43,7 @@ public class EnemyMove : MonoBehaviour
 
     void Move() // 이동속도 결정
     {
-        nextMove = Random.Range(-1, 2);
+        nextMove = Random.Range(-1, 2); // -1, 0, 1
         Animate();
     }
 
@@ -57,7 +58,7 @@ public class EnemyMove : MonoBehaviour
 
     void Animate() // 스프라이트 애니메이션 관련
     {
-        anim.SetInteger("WalkSpeed", nextMove);
+        anim.SetInteger("runSpeed", nextMove);
 
         if (nextMove != 0)
         {

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    public float maxSpeed;
+    public float maxSpeed = 5f;
     public float jumpPower;
 
     public Vector2 boxCastSize = new Vector2(0.6f, 0.05f);

@@ -2515,7 +2515,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1482232547}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -9.81, y: 11.6, z: 0}
+  m_LocalPosition: {x: -19.47, y: 5.3, z: 0}
   m_LocalScale: {x: 8, y: 8, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -4146,7 +4146,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2232475007250662192, guid: 35462b6a8ad1c2e42a90dfa2ebe6732c, type: 3}
       propertyPath: m_Name
-      value: Tail_Sky3
+      value: Block_Cloud3
       objectReference: {fileID: 0}
     - target: {fileID: 2232475007250662195, guid: 35462b6a8ad1c2e42a90dfa2ebe6732c, type: 3}
       propertyPath: m_RootOrder
@@ -4203,7 +4203,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 5371186863921612327, guid: f3e3da281d1746c4abea04415d9ee53b, type: 3}
       propertyPath: m_Name
-      value: Tail_Sky2
+      value: Block_Cloud2
       objectReference: {fileID: 0}
     - target: {fileID: 5371186863921612328, guid: f3e3da281d1746c4abea04415d9ee53b, type: 3}
       propertyPath: m_RootOrder
@@ -4260,7 +4260,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 6912615688190321505, guid: 9091df6ce30a46c4888077e68f139644, type: 3}
       propertyPath: m_Name
-      value: Tail_Sky4
+      value: Block_Cloud4
       objectReference: {fileID: 0}
     - target: {fileID: 6912615688190321506, guid: 9091df6ce30a46c4888077e68f139644, type: 3}
       propertyPath: m_RootOrder
@@ -4361,7 +4361,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7611537036748870723, guid: 4e8d22d69dbaa5e459773398c1eb2bd4, type: 3}
       propertyPath: m_Name
-      value: Tail_Sky1
+      value: Block_Cloud1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4e8d22d69dbaa5e459773398c1eb2bd4, type: 3}
