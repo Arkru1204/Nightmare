@@ -146,7 +146,7 @@ GameObject:
   - component: {fileID: 7707891220993089947}
   - component: {fileID: 7707891220993089949}
   m_Layer: 8
-  m_Name: Player
+  m_Name: Player 1
   m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -179,7 +179,7 @@ Animator:
   m_GameObject: {fileID: 7707891220993089943}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: d9542a2a6bdcce24f82a7bea0acd2752, type: 2}
+  m_Controller: {fileID: 9100000, guid: 8d494085f9ef5584180b3c36b1f6df29, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
