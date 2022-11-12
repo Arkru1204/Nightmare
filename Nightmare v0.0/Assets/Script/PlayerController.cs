@@ -29,7 +29,7 @@ public class PlayerController : MonoBehaviour
     {
         if (!isHit) 
         {
-            // 점프 (점프를 누르고, 점프 중이 아니고, 피격 상태가 아닐 때)
+            // 점프 (점프를 누르고, 점프 중이 아니고, 피격 상태가 아니면)
             if (Input.GetButtonDown("Jump") && !anim.GetBool("isJumping") && !IsInvoking("reRotate"))
             {
                 //rigid.velocity = new Vector2(rigid.velocity.x, 0); // 점프 속도 초기화
@@ -51,8 +51,8 @@ public class PlayerController : MonoBehaviour
             if (!(Input.GetButton("Horizontal")))
                 rigid.velocity = new Vector2(0, rigid.velocity.y);
 
-            // 공격
-            if (Input.GetButtonDown("Fire1"))
+            // 공격 (현재 실행 중인 애니메이션이 공격이 아니면)
+            if (Input.GetButtonDown("Fire1") && !anim.GetCurrentAnimatorStateInfo(0).IsName("Player1_AttackFront"))
                 Attack();
         }
 
