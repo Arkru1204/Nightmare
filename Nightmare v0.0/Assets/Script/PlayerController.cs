@@ -21,7 +21,7 @@ public class PlayerController : MonoBehaviour
     void Awake()
     {
         rigid = GetComponent<Rigidbody2D>();
-        spriteRenderer = GetComponent<SpriteRenderer>();
+        spriteRenderer = GetComponentInChildren<SpriteRenderer>();
         anim = GetComponent<Animator>();
     }
 
@@ -110,9 +110,9 @@ public class PlayerController : MonoBehaviour
     void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.tag == "Enemy")
-        {
             onHit(collision.transform.position); // Enemy의 위치 정보 매개변수
-        }
+        if (collision.gameObject.tag == "Trap")
+            onHit(collision.transform.position);
     }
 
     void onHit(Vector2 targetPos)
