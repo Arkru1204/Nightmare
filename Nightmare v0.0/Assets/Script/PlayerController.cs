@@ -6,7 +6,7 @@ public class PlayerController : MonoBehaviour
 {
     public float maxSpeed = 5f;
     public float jumpPower = 20f;
-    public float bouncPower = 10;
+    public float bouncPower = 10f;
     public float invulnTIme = 0.8f;
 
     bool isHit = false;
@@ -27,7 +27,7 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
-        if (!isHit)
+        if (!isHit) 
         {
             // 점프 (점프를 누르고, 점프 중이 아니고, 피격 상태가 아닐 때)
             if (Input.GetButtonDown("Jump") && !anim.GetBool("isJumping") && !IsInvoking("reRotate"))
@@ -42,16 +42,22 @@ public class PlayerController : MonoBehaviour
                 rigid.velocity = new Vector2(rigid.velocity.normalized.x * 0.0000001f, rigid.velocity.y);
 
             // 방향 전환
+            //if (Input.GetButton("Horizontal"))
+            //    spriteRenderer.flipX = Input.GetAxisRaw("Horizontal") == -1;
             if (Input.GetButton("Horizontal"))
-                spriteRenderer.flipX = Input.GetAxisRaw("Horizontal") == -1;
+                transform.localScale = new Vector3(Input.GetAxisRaw("Horizontal"), transform.localScale.y, transform.localScale.z);
 
             // 미끄러짐 방지
             if (!(Input.GetButton("Horizontal")))
                 rigid.velocity = new Vector2(0, rigid.velocity.y);
+
+            // 공격
+            if (Input.GetButtonDown("Fire1"))
+                Attack();
         }
 
         // 달리기 애니메이션
-        if (Mathf.Abs(rigid.velocity.x) < 0.3) // 절댓값 설정
+        if (Mathf.Abs(rigid.velocity.x) < 0.3) // 절댓값x가 크면 달리기
             anim.SetBool("isRunning", false);
         else
             anim.SetBool("isRunning", true);
@@ -137,9 +143,14 @@ public class PlayerController : MonoBehaviour
         spriteRenderer.color = new Color(1, 1, 1, 1f); // 색 변경
     }
 
-    void reRotate() // 회전 초기화, 조작 불가 기간
+    void reRotate() // 회전 초기화, 다시 조작 가능
     {
         this.transform.rotation = Quaternion.Euler(0, 0, 0);
         isHit = false;
+    }
+
+    void Attack()
+    {
+        anim.SetTrigger("doAttack");
     }
 }
