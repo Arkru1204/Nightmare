@@ -15,19 +15,19 @@ public class PlayerController : MonoBehaviour
     float boxCastMaxDistance = 1.0f;
 
     Rigidbody2D rigid;
-    SpriteRenderer spriteRenderer;
     Animator anim;
+    SpriteRenderer spriteRenderer;
 
     void Awake()
     {
         rigid = GetComponent<Rigidbody2D>();
-        spriteRenderer = GetComponentInChildren<SpriteRenderer>();
         anim = GetComponent<Animator>();
+        spriteRenderer = GetComponentInChildren<SpriteRenderer>(); // 하위 오브젝트
     }
 
     void Update()
     {
-        if (!isHit) 
+        if (!isHit)
         {
             // 점프 (점프를 누르고, 점프 중이 아니고, 피격 상태가 아니면)
             if (Input.GetButtonDown("Jump") && !anim.GetBool("isJumping") && !IsInvoking("reRotate"))
@@ -123,7 +123,7 @@ public class PlayerController : MonoBehaviour
 
     void onHit(Vector2 targetPos)
     {
-        gameObject.layer = 9; // 플레이어의 Layer 변경 (무적)
+        gameObject.layer = 9; // 플레이어의 Layer 변경 (Super Armor)
         spriteRenderer.color = new Color(1, 1, 1, 0.4f); // 피격당했을 때 색 변경
         isHit = true;
 
