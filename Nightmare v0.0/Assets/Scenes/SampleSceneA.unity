@@ -928,7 +928,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 550124919}
   cameraXpos: 0
-  cameraYpos: 2
+  cameraYpos: 1.5
 --- !u!1 &536555396
 GameObject:
   m_ObjectHideFlags: 0
