@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 4b3c96b9783f0c146bba873ed8af6a23
+guid: b2f4c3c5ff2e1c445b6647d1e078773b
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -105,7 +105,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Player1_AttackFront-Sheet_0
+      name: PlayerB_AttackFront-Sheet_0
       rect:
         serializedVersion: 2
         x: 0
@@ -119,14 +119,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c16e25a428d174e4c979edadac707cba
-      internalID: -1516820536
+      spriteID: b7ae224d28475fd46a2c91d917552202
+      internalID: 37328066
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Player1_AttackFront-Sheet_1
+      name: PlayerB_AttackFront-Sheet_1
       rect:
         serializedVersion: 2
         x: 160
@@ -140,14 +140,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 3ea47f9253b1fa748ba8348a0cc5724e
-      internalID: 1117878602
+      spriteID: f66238df6b2150243a685d3781b14eee
+      internalID: 1215648274
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Player1_AttackFront-Sheet_2
+      name: PlayerB_AttackFront-Sheet_2
       rect:
         serializedVersion: 2
         x: 320
@@ -161,14 +161,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 38a73738a96a47e48803de84e2d31945
-      internalID: 1011546611
+      spriteID: bc02ddac6141e504997f7e6a6eb0ae57
+      internalID: -1736432758
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Player1_AttackFront-Sheet_3
+      name: PlayerB_AttackFront-Sheet_3
       rect:
         serializedVersion: 2
         x: 480
@@ -182,8 +182,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 81b14f33f3320a140a76543570cd3038
-      internalID: -2117475144
+      spriteID: ac3ddd8754514434f8d37fec5eb63b33
+      internalID: -1292350559
       vertices: []
       indices: 
       edges: []
@@ -199,10 +199,10 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Player1_AttackFront-Sheet_1: 1117878602
-      Player1_AttackFront-Sheet_2: 1011546611
-      Player1_AttackFront-Sheet_3: -2117475144
-      Player1_AttackFront-Sheet_0: -1516820536
+      PlayerB_AttackFront-Sheet_2: -1736432758
+      PlayerB_AttackFront-Sheet_3: -1292350559
+      PlayerB_AttackFront-Sheet_0: 37328066
+      PlayerB_AttackFront-Sheet_1: 1215648274
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0
