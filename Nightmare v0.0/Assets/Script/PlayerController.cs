@@ -38,13 +38,13 @@ public class PlayerController : MonoBehaviour
             }
 
             // 움직임 멈춤
-            if (Input.GetButtonUp("Horizontal"))
+            if (Input.GetButtonUp("Horizontal") || Input.GetAxisRaw("Horizontal") == 0) // 바로 멈춤
                 rigid.velocity = new Vector2(rigid.velocity.normalized.x * 0.0000001f, rigid.velocity.y);
 
             // 방향 전환
             //if (Input.GetButton("Horizontal"))
             //    spriteRenderer.flipX = Input.GetAxisRaw("Horizontal") == -1;
-            if (Input.GetButton("Horizontal"))
+            if (Input.GetButton("Horizontal") && Input.GetAxisRaw("Horizontal") != 0) // 좌우키 동시 입력 버그 방지
                 transform.localScale = new Vector3(Input.GetAxisRaw("Horizontal"), transform.localScale.y, transform.localScale.z);
 
             // 미끄러짐 방지
