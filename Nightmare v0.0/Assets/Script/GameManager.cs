@@ -4,9 +4,7 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-    public int totalPoint;
-    public int stagePoint;
-    public int stageIndex;
+    public int hp;
 
     void Start()
     {

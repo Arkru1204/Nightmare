@@ -144,6 +144,7 @@ GameObject:
   - component: {fileID: 7707891220993089944}
   - component: {fileID: 7707891220993089950}
   - component: {fileID: 7707891220993089947}
+  - component: {fileID: 6483006975296128597}
   - component: {fileID: 7707891220993089949}
   m_Layer: 8
   m_Name: PlayerB
@@ -226,6 +227,21 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
+--- !u!114 &6483006975296128597
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7707891220993089943}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0dc311249aa0b734290095a0cde604d5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameManager: {fileID: 0}
+  bouncPower: 10
+  invulnTIme: 0.8
 --- !u!114 &7707891220993089949
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -240,5 +256,3 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxSpeed: 5
   jumpPower: 20
-  bouncPower: 10
-  invulnTIme: 0.8
