@@ -6,26 +6,25 @@ public class EnemyController : MonoBehaviour
 {
     public int nextMove; // 행동 지표를 결정할 변수 하나 생성
     public float maxSpeed = 2.5f;
-    public float bouncPower = 10f;
-
-    bool isHit = false;
 
     Rigidbody2D rigid;
     Animator anim;
     SpriteRenderer spriteRenderer;
+    EnemyMain enemyMain;
 
     void Awake()
     {
         rigid = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
         spriteRenderer = GetComponent<SpriteRenderer>();
+        enemyMain = GetComponent<EnemyMain>();
 
         Invoke("Think", 3); // 주어진 시간이 지난뒤 지정된 함수를 실행하는 함수 
     }
 
     void FixedUpdate()
     {
-        if (!isHit)
+        if (!enemyMain.IsHit())
         {
             rigid.velocity = new Vector2(nextMove * maxSpeed, rigid.velocity.y);
 
@@ -68,24 +67,5 @@ public class EnemyController : MonoBehaviour
 
         if (nextMove != 0)
             spriteRenderer.flipX = nextMove == 1;
-    }
-
-    void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (collision.gameObject.tag == "Player Attack")
-            onHit(collision.transform.position);
-    }
-
-    void onHit(Vector2 targetPos)
-    {
-        isHit = true;
-        gameObject.layer = 9; // Super Armor
-        spriteRenderer.color = new Color(1, 1, 1, 0.4f);
-
-        int dir = transform.position.x - targetPos.x > 0 ? 1 : -1; // 피격시 튕겨나가는 방향 결정
-        rigid.AddForce(new Vector2(dir, 1) * bouncPower, ForceMode2D.Impulse); // 튕겨나가기
-        this.transform.Rotate(0, 0, dir * (-10)); // 회전
-
-        Destroy(gameObject, 1);
     }
 }
