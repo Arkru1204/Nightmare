@@ -25,12 +25,12 @@ public class PlayerMain : MonoBehaviour
     void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.tag == "Enemy")
-            onHit(collision.transform.position); // Enemy의 위치 정보 매개변수
+            OnHit(collision.transform.position); // Enemy의 위치 정보 매개변수
         if (collision.gameObject.tag == "Trap")
-            onHit(collision.transform.position);
+            OnHit(collision.transform.position);
     }
 
-    void onHit(Vector2 targetPos)
+    void OnHit(Vector2 targetPos)
     {
         gameObject.layer = 9; // 플레이어의 Layer 변경 (Super Armor)
         spriteRenderer.color = new Color(1, 1, 1, 0.4f); // 피격당했을 때 색 변경
@@ -40,19 +40,21 @@ public class PlayerMain : MonoBehaviour
         rigid.AddForce(new Vector2(dir, 1) * bouncPower, ForceMode2D.Impulse); // 튕겨나가기
 
         this.transform.Rotate(0, 0, dir * (-10)); // 회전
-        Invoke("reRotate", 0.4f);
+        Invoke("ReRotate", 0.4f);
 
         anim.SetTrigger("doHit"); // 애니메이션 트리거
-        Invoke("offHit", invulnTIme); // invulnTIme 후 무적 시간 끝
+        Invoke("OffHit", invulnTIme); // invulnTIme 후 무적 시간 끝
+
+        gameManager.HpDown();
     }
 
-    void offHit()
+    void OffHit()
     {
         gameObject.layer = 8; // Layer 변경
         spriteRenderer.color = new Color(1, 1, 1, 1f); // 색 변경
     }
 
-    void reRotate() // 회전 초기화, 다시 조작 가능
+    void ReRotate() // 회전 초기화, 다시 조작 가능
     {
         this.transform.rotation = Quaternion.Euler(0, 0, 0);
         isHit = false;
