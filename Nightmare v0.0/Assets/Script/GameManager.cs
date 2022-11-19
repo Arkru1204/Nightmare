@@ -22,7 +22,7 @@ public class GameManager : MonoBehaviour
 
     IEnumerator DestroyHp(int i)
     {
-        yield return new WaitForSeconds(0.8f); // 0.8초 뒤 독립시행
+        yield return new WaitForSeconds(0.7f); // 0.8초 뒤 독립시행
         HpUI[i].SetActive(false);
     }
 

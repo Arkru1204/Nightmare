@@ -158,9 +158,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fb2cbb9c1f233684e92827adbd19c8b2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hp: 0
+  hp: 2
   bouncPower: 3
-  invulnTIme: 0.2
+  invulnTIme: 0.5
 --- !u!114 &538932391789834033
 MonoBehaviour:
   m_ObjectHideFlags: 0
