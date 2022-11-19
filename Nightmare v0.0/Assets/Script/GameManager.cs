@@ -19,12 +19,12 @@ public class GameManager : MonoBehaviour
             StartCoroutine(Dead());
 
         hpAnim[hp].SetBool("isHpDestroy", true);
-        StartCoroutine(DestroyHp(hp)); // ¸Å°³º¯¼ö Àü´ÞÀ» À§ÇØ¼­ ÄÚ·çÆ¾ »ç¿ë
+        StartCoroutine(DestroyHp(hp)); // ï¿½Å°ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ø¼ï¿½ ï¿½Ú·ï¿½Æ¾ ï¿½ï¿½ï¿½
     }
 
     IEnumerator DestroyHp(int i)
     {
-        yield return new WaitForSeconds(0.7f); // 0.8ÃÊ µÚ µ¶¸³½ÃÇà
+        yield return new WaitForSeconds(0.7f); // 0.8ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
         hpUI[i].SetActive(false);
     }
 

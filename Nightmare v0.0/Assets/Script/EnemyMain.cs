@@ -67,9 +67,4 @@ public class EnemyMain : MonoBehaviour
     {
         return isHit;
     }
-
-    public bool IsHit()
-    {
-        return isHit;
-    }
 }
