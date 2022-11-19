@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class EnemyMain : MonoBehaviour
 {
-    public int hp;
+    public int hp = 2;
     public float bouncPower = 3f;
-    public float invulnTIme = 0.2f;
+    public float invulnTIme = 0.5f;
 
     bool isHit = false;
 
@@ -60,7 +60,7 @@ public class EnemyMain : MonoBehaviour
     IEnumerator Dead()
     {
         yield return new WaitForSeconds(0.35f);
-        Destroy(gameObject, 1);
+        Destroy(gameObject);
     }
 
     public bool IsHit()
