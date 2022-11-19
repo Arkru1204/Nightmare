@@ -33,9 +33,9 @@ public class EnemyMain : MonoBehaviour
         gameObject.layer = 9; // Super Armor
         spriteRenderer.color = new Color(1, 1, 1, 0.4f);
 
-        int dir = transform.position.x - targetPos.x > 0 ? 1 : -1; // ÇÇ°Ý½Ã Æ¨°Ü³ª°¡´Â ¹æÇâ °áÁ¤
-        rigid.AddForce(new Vector2(dir, 1) * bouncPower, ForceMode2D.Impulse); // Æ¨°Ü³ª°¡±â
-        this.transform.Rotate(0, 0, dir * (-10)); // È¸Àü
+        int dir = transform.position.x - targetPos.x > 0 ? 1 : -1; // ï¿½Ç°Ý½ï¿½ Æ¨ï¿½Ü³ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
+        rigid.AddForce(new Vector2(dir, 1) * bouncPower, ForceMode2D.Impulse); // Æ¨ï¿½Ü³ï¿½ï¿½ï¿½ï¿½ï¿½
+        this.transform.Rotate(0, 0, dir * (-10)); // È¸ï¿½ï¿½
 
         HpDown();
     }
@@ -51,8 +51,8 @@ public class EnemyMain : MonoBehaviour
 
     void OffHit()
     {
-        gameObject.layer = 10; // Layer º¯°æ
-        spriteRenderer.color = new Color(1, 1, 1, 1f); // »ö º¯°æ
+        gameObject.layer = 10; // Layer ï¿½ï¿½ï¿½ï¿½
+        spriteRenderer.color = new Color(1, 1, 1, 1f); // ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
         this.transform.rotation = Quaternion.Euler(0, 0, 0);
         isHit = false;
     }
@@ -61,6 +61,11 @@ public class EnemyMain : MonoBehaviour
     {
         yield return new WaitForSeconds(0.35f);
         Destroy(gameObject);
+    }
+
+    public bool IsHit()
+    {
+        return isHit;
     }
 
     public bool IsHit()
