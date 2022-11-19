@@ -4,8 +4,10 @@ using UnityEngine;
 
 public class EnemyController : MonoBehaviour
 {
-    public int nextMove; // 행동 지표를 결정할 변수 하나 생성
     public float maxSpeed = 2.5f;
+    public float raycastDistance = 1f;
+
+    int nextMove; // 행동 지표를 결정할 변수 하나 생성
 
     Rigidbody2D rigid;
     Animator anim;
@@ -31,8 +33,8 @@ public class EnemyController : MonoBehaviour
             //지형 체크
             Vector2 frontVec = new Vector2(rigid.position.x + nextMove * 0.4f, rigid.position.y);
 
-            //Debug.DrawRay(frontVec, Vector3.down, new Color(0, 1, 0)); // 에디터 상에서만 레이를 그려준다
-            RaycastHit2D rayHit = Physics2D.Raycast(frontVec, Vector3.down, 1, LayerMask.GetMask("Map"));
+            //Debug.DrawRay(frontVec, Vector3.down, new Color(0, 2f, 0)); // 에디터 상에서만 레이를 그려준다
+            RaycastHit2D rayHit = Physics2D.Raycast(frontVec, Vector3.down, raycastDistance, LayerMask.GetMask("Map"));
             if (rayHit.collider == null) // 바닥 감지가 없을 때
                 Turn();
         }
@@ -40,10 +42,13 @@ public class EnemyController : MonoBehaviour
 
     void Think()
     {
-        Move();
+        if (!enemyMain.IsHit())
+        {
+            Move();
 
-        float nextThinkTime = Random.Range(2f, 5f); // 2.0 ~ 5.0
-        Invoke("Think", nextThinkTime);
+            float nextThinkTime = Random.Range(2f, 5f); // 2.0 ~ 5.0
+            Invoke("Think", nextThinkTime);
+        }
     }
 
     void Move() // 이동 방향 결정
