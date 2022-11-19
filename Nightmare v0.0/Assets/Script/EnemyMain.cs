@@ -5,7 +5,8 @@ using UnityEngine;
 public class EnemyMain : MonoBehaviour
 {
     public int hp;
-    public float bouncPower = 10f;
+    public float bouncPower = 3f;
+    public float invulnTIme = 0.2f;
 
     bool isHit = false;
 
@@ -36,12 +37,7 @@ public class EnemyMain : MonoBehaviour
         rigid.AddForce(new Vector2(dir, 1) * bouncPower, ForceMode2D.Impulse); // 튕겨나가기
         this.transform.Rotate(0, 0, dir * (-10)); // 회전
 
-       
-    }
-
-    public bool IsHit()
-    {
-        return isHit;
+        HpDown();
     }
 
     public void HpDown()
@@ -49,11 +45,26 @@ public class EnemyMain : MonoBehaviour
         hp--;
         if (hp == 0)
             StartCoroutine(Dead());
+
+        Invoke("OffHit", invulnTIme);
+    }
+
+    void OffHit()
+    {
+        gameObject.layer = 10; // Layer 변경
+        spriteRenderer.color = new Color(1, 1, 1, 1f); // 색 변경
+        this.transform.rotation = Quaternion.Euler(0, 0, 0);
+        isHit = false;
     }
 
     IEnumerator Dead()
     {
         yield return new WaitForSeconds(0.35f);
         Destroy(gameObject, 1);
+    }
+
+    public bool IsHit()
+    {
+        return isHit;
     }
 }
