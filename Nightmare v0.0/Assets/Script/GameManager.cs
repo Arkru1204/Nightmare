@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
-    public PlayerMain player;
+    public GameObject player;
     public int hp = 3;
 
     public GameObject[] hpUI;
@@ -31,13 +31,14 @@ public class GameManager : MonoBehaviour
     IEnumerator Dead()
     {
         yield return new WaitForSeconds(0.35f);
-        Time.timeScale = 0;
-
+        player.GetComponent<PlayerController>().enabled = false;
         restartButton.SetActive(true);
+        Time.timeScale = 0;
     }
 
     public void Restart()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        player.GetComponent<PlayerController>().enabled = true;
     }
 }

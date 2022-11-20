@@ -25,6 +25,16 @@ public class FadeInOut : MonoBehaviour
             StartCoroutine(FadeOut(fadeTime));
     }
 
+    private void Update()
+    {
+        Color color = image.color;
+        while (color.a < 1f)
+        {
+            color.a += Time.deltaTime / 1f;
+            image.color = color;
+        }
+    }
+
     public IEnumerator FadeIn(float time)
     {
         Color color = image.color;
