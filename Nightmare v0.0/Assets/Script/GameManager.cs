@@ -1,34 +1,44 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
-    public PlayerMain player;
+    public GameObject player;
     public int hp = 3;
-    public GameObject[] HpUI;
-    public Animator[] HpAnim;
+
+    public GameObject[] hpUI;
+    public Animator[] hpAnim;
+    public GameObject restartButton;
 
     public void HpDown()
     {
         hp--;
-        if (hp == 0)
+        if (hp <= 0)
             StartCoroutine(Dead());
 
-        HpAnim[hp].SetBool("isHpDestroy", true);
-        StartCoroutine(DestroyHp(hp)); // ¸Å°³º¯¼ö Àü´ÞÀ» À§ÇØ¼­ ÄÚ·çÆ¾ »ç¿ë
+        hpAnim[hp].SetBool("isHpDestroy", true);
+        StartCoroutine(DestroyHp(hp)); // ï¿½Å°ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ø¼ï¿½ ï¿½Ú·ï¿½Æ¾ ï¿½ï¿½ï¿½
     }
 
     IEnumerator DestroyHp(int i)
     {
-        yield return new WaitForSeconds(0.7f); // 0.8ÃÊ µÚ µ¶¸³½ÃÇà
-        HpUI[i].SetActive(false);
+        yield return new WaitForSeconds(0.7f); // 0.8ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+        hpUI[i].SetActive(false);
     }
 
     IEnumerator Dead()
     {
         yield return new WaitForSeconds(0.35f);
+        player.GetComponent<PlayerController>().enabled = false;
+        restartButton.SetActive(true);
         Time.timeScale = 0;
+    }
+
+    public void Restart()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        player.GetComponent<PlayerController>().enabled = true;
     }
 }
