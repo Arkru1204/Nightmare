@@ -6,7 +6,7 @@ public class EnemyMain : MonoBehaviour
 {
     public int hp = 2;
     public float bouncPower = 3f;
-    public float invulnTIme = 0.5f;
+    public float invulnTime = 0.5f;
 
     bool isHit = false;
 
@@ -18,7 +18,7 @@ public class EnemyMain : MonoBehaviour
     {
         rigid = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
-        spriteRenderer = GetComponent<SpriteRenderer>();
+        spriteRenderer = GetComponentInChildren<SpriteRenderer>();
     }
 
     void OnTriggerEnter2D(Collider2D collision)
@@ -30,12 +30,12 @@ public class EnemyMain : MonoBehaviour
     void onHit(Vector2 targetPos)
     {
         isHit = true;
-        gameObject.layer = 9; // Super Armor
+        gameObject.layer = 9; // Super Armor Layer
         spriteRenderer.color = new Color(1, 1, 1, 0.4f);
 
-        int dir = transform.position.x - targetPos.x > 0 ? 1 : -1; // ÇÇ°Ý½Ã Æ¨°Ü³ª°¡´Â ¹æÇâ °áÁ¤
-        rigid.AddForce(new Vector2(dir, 1) * bouncPower, ForceMode2D.Impulse); // Æ¨°Ü³ª°¡±â
-        this.transform.Rotate(0, 0, dir * (-10)); // È¸Àü
+        int dir = transform.position.x - targetPos.x > 0 ? 1 : -1; // í”¼ê²©ì‹œ íŠ•ê²¨ë‚˜ê°€ëŠ” ë°©í–¥ ê²°ì •
+        rigid.AddForce(new Vector2(dir, 1) * bouncPower, ForceMode2D.Impulse); // íŠ•ê²¨ë‚˜ê°€ê¸°
+        this.transform.Rotate(0, 0, dir * (-10)); // íšŒì „
 
         HpDown();
     }
@@ -46,13 +46,13 @@ public class EnemyMain : MonoBehaviour
         if (hp == 0)
             StartCoroutine(Dead());
 
-        Invoke("OffHit", invulnTIme);
+        Invoke("OffHit", invulnTime);
     }
 
     void OffHit()
     {
-        gameObject.layer = 10; // Layer º¯°æ
-        spriteRenderer.color = new Color(1, 1, 1, 1f); // »ö º¯°æ
+        gameObject.layer = 10; // Enemy Layer
+        spriteRenderer.color = new Color(1, 1, 1, 1f); // ìƒ‰ ë³€ê²½
         this.transform.rotation = Quaternion.Euler(0, 0, 0);
         isHit = false;
     }
