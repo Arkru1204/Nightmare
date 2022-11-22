@@ -7,6 +7,8 @@ TagManager:
   - Enemy
   - Trap
   - Player Attack
+  - Detect Area
+  - Bullet
   layers:
   - Default
   - TransparentFX
@@ -20,8 +22,8 @@ TagManager:
   - Super Armor
   - Enemy
   - Object
-  - 
-  - 
+  - Attack Area
+  - Detect Area
   - 
   - 
   - 
@@ -50,17 +52,17 @@ TagManager:
   - name: Map
     uniqueID: 754168893
     locked: 0
-  - name: Object
-    uniqueID: 1054624797
-    locked: 0
-  - name: Object
-    uniqueID: 673751499
-    locked: 0
   - name: Enemy
     uniqueID: 2345070977
     locked: 0
   - name: Player
     uniqueID: 822344811
+    locked: 0
+  - name: Object
+    uniqueID: 673751499
+    locked: 0
+  - name: Effect
+    uniqueID: 1054624797
     locked: 0
   - name: UI
     uniqueID: 3980502635

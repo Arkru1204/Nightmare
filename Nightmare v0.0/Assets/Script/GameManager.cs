@@ -15,25 +15,29 @@ public class GameManager : MonoBehaviour
     public void HpDown()
     {
         hp--;
-        if (hp <= 0)
+        if (hp < 1)
+        {
+            player.OnDead();
             StartCoroutine(Dead());
+        }
+        if (hp < 0) // ì¸ë±ìŠ¤ ì°¸ì¡° ì˜¤ë¥˜ ë°©ì§€ìš©
+            return;
 
         hpAnim[hp].SetBool("isHpDestroy", true);
-        StartCoroutine(DestroyHp(hp)); // ¸Å°³º¯¼ö Àü´ÞÀ» À§ÇØ¼­ ÄÚ·çÆ¾ »ç¿ë
+        StartCoroutine(DestroyHp(hp)); // ë§¤ê°œë³€ìˆ˜ ì „ë‹¬ì„ ìœ„í•´ì„œ ì½”ë£¨í‹´ ì‚¬ìš©
     }
 
     IEnumerator DestroyHp(int i)
     {
-        yield return new WaitForSeconds(0.7f); // 0.8ÃÊ µÚ µ¶¸³½ÃÇà
+        yield return new WaitForSeconds(0.7f); // 0.8ì´ˆ ë’¤ ë…ë¦½ì‹œí–‰
         hpUI[i].SetActive(false);
     }
 
     IEnumerator Dead()
     {
         yield return new WaitForSeconds(0.35f);
-        Time.timeScale = 0;
-
         restartButton.SetActive(true);
+        //Time.timeScale = 0;
     }
 
     public void Restart()

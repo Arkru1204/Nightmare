@@ -19,42 +19,49 @@ public class PlayerMain : MonoBehaviour
     {
         rigid = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
-        spriteRenderer = GetComponentInChildren<SpriteRenderer>(); // ÇÏÀ§ ¿ÀºêÁ§Æ®
+        spriteRenderer = GetComponentInChildren<SpriteRenderer>(); // í•˜ìœ„ ì˜¤ë¸Œì íŠ¸
+
+        gameObject.layer = 8;
+        isHit = false;
+
+        spriteRenderer.color = new Color(1, 1, 1, 1);
     }
 
     void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.tag == "Enemy")
-            OnHit(collision.transform.position); // EnemyÀÇ À§Ä¡ Á¤º¸ ¸Å°³º¯¼ö
+            OnHit(collision.transform.position); // Enemyì˜ ìœ„ì¹˜ ì •ë³´ ë§¤ê°œë³€ìˆ˜
         if (collision.gameObject.tag == "Trap")
+            OnHit(collision.transform.position);
+        if (collision.gameObject.tag == "Bullet")
             OnHit(collision.transform.position);
     }
 
     void OnHit(Vector2 targetPos)
     {
-        gameObject.layer = 9; // ÇÃ·¹ÀÌ¾îÀÇ Layer º¯°æ (Super Armor)
-        spriteRenderer.color = new Color(1, 1, 1, 0.4f); // ÇÇ°İ´çÇßÀ» ¶§ »ö º¯°æ
+        gameObject.layer = 9; // Super Armor Layer
+        spriteRenderer.color = new Color(1, 1, 1, 0.4f); // í”¼ê²©ë‹¹í–ˆì„ ë•Œ ìƒ‰ ë³€ê²½
         isHit = true;
 
-        int dir = transform.position.x - targetPos.x > 0 ? 1 : -1; // ÇÇ°İ½Ã Æ¨°Ü³ª°¡´Â ¹æÇâ °áÁ¤
-        rigid.AddForce(new Vector2(dir, 1) * bouncPower, ForceMode2D.Impulse); // Æ¨°Ü³ª°¡±â
+        int dir = transform.position.x - targetPos.x > 0 ? 1 : -1; // í”¼ê²©ì‹œ íŠ•ê²¨ë‚˜ê°€ëŠ” ë°©í–¥ ê²°ì •
+        rigid.AddForce(new Vector2(dir, 1) * bouncPower, ForceMode2D.Impulse); // íŠ•ê²¨ë‚˜ê°€ê¸°
 
-        this.transform.Rotate(0, 0, dir * (-10)); // È¸Àü
+        this.transform.Rotate(0, 0, dir * (-10)); // íšŒì „
         Invoke("ReRotate", 0.4f);
 
-        anim.SetTrigger("doHit"); // ¾Ö´Ï¸ŞÀÌ¼Ç Æ®¸®°Å
-        Invoke("OffHit", invulnTIme); // invulnTIme ÈÄ ¹«Àû ½Ã°£ ³¡
+        anim.SetTrigger("doHit"); // ì• ë‹ˆë©”ì´ì…˜ íŠ¸ë¦¬ê±°
+        Invoke("OffHit", invulnTIme); // invulnTIme í›„ ë¬´ì  ì‹œê°„ ë
 
         gameManager.HpDown();
     }
 
     void OffHit()
     {
-        gameObject.layer = 8; // Layer º¯°æ
-        spriteRenderer.color = new Color(1, 1, 1, 1f); // »ö º¯°æ
+        gameObject.layer = 8; // Player Layer
+        spriteRenderer.color = new Color(1, 1, 1, 1f); // ìƒ‰ ë³€ê²½
     }
 
-    void ReRotate() // È¸Àü ÃÊ±âÈ­, ´Ù½Ã Á¶ÀÛ °¡´É
+    void ReRotate() // íšŒì „ ì´ˆê¸°í™”, ë‹¤ì‹œ ì¡°ì‘ ê°€ëŠ¥
     {
         this.transform.rotation = Quaternion.Euler(0, 0, 0);
         isHit = false;
@@ -63,5 +70,17 @@ public class PlayerMain : MonoBehaviour
     public bool IsHit()
     {
         return isHit;
+    }
+
+    public void OnDead()
+    {
+        gameObject.layer = 9;
+        isHit = true;
+
+        spriteRenderer.color = new Color(1, 1, 1, 0.4f);
+        anim.SetTrigger("doDead");
+
+        CancelInvoke("ReRotate");
+        CancelInvoke("OffHit");
     }
 }

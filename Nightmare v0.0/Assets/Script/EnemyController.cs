@@ -7,7 +7,7 @@ public class EnemyController : MonoBehaviour
     public float maxSpeed = 2.5f;
     public float raycastDistance = 1f;
 
-    int nextMove; // Çàµ¿ ÁöÇ¥¸¦ °áÁ¤ÇÒ º¯¼ö ÇÏ³ª »ı¼º
+    int nextMove; // í–‰ë™ ì§€í‘œë¥¼ ê²°ì •í•  ë³€ìˆ˜ í•˜ë‚˜ ìƒì„±
 
     Rigidbody2D rigid;
     Animator anim;
@@ -18,10 +18,10 @@ public class EnemyController : MonoBehaviour
     {
         rigid = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
-        spriteRenderer = GetComponent<SpriteRenderer>();
+        spriteRenderer = GetComponentInChildren<SpriteRenderer>();
         enemyMain = GetComponent<EnemyMain>();
 
-        Invoke("Think", 3); // ÁÖ¾îÁø ½Ã°£ÀÌ Áö³­µÚ ÁöÁ¤µÈ ÇÔ¼ö¸¦ ½ÇÇàÇÏ´Â ÇÔ¼ö 
+        Invoke("Think", 3); // ì£¼ì–´ì§„ ì‹œê°„ì´ ì§€ë‚œë’¤ ì§€ì •ëœ í•¨ìˆ˜ë¥¼ ì‹¤í–‰í•˜ëŠ” í•¨ìˆ˜ 
     }
 
     void FixedUpdate()
@@ -30,12 +30,12 @@ public class EnemyController : MonoBehaviour
         {
             rigid.velocity = new Vector2(nextMove * maxSpeed, rigid.velocity.y);
 
-            //ÁöÇü Ã¼Å©
+            //ì§€í˜• ì²´í¬
             Vector2 frontVec = new Vector2(rigid.position.x + nextMove * 0.4f, rigid.position.y);
 
-            //Debug.DrawRay(frontVec, Vector3.down, new Color(0, 2f, 0)); // ¿¡µğÅÍ »ó¿¡¼­¸¸ ·¹ÀÌ¸¦ ±×·ÁÁØ´Ù
+            //Debug.DrawRay(frontVec, Vector3.down, new Color(0, 2f, 0)); // ì—ë””í„° ìƒì—ì„œë§Œ ë ˆì´ë¥¼ ê·¸ë ¤ì¤€ë‹¤
             RaycastHit2D rayHit = Physics2D.Raycast(frontVec, Vector3.down, raycastDistance, LayerMask.GetMask("Map"));
-            if (rayHit.collider == null) // ¹Ù´Ú °¨Áö°¡ ¾øÀ» ¶§
+            if (rayHit.collider == null) // ë°”ë‹¥ ê°ì§€ê°€ ì—†ì„ ë•Œ
                 Turn();
         }
     }
@@ -51,13 +51,13 @@ public class EnemyController : MonoBehaviour
         }
     }
 
-    void Move() // ÀÌµ¿ ¹æÇâ °áÁ¤
+    void Move() // ì´ë™ ë°©í–¥ ê²°ì •
     {
         nextMove = Random.Range(-1, 2); // -1, 0, 1
         Animate();
     }
 
-    void Turn() // ¼Óµµ´Â À¯ÁöÇÑÃ¤·Î ¹æÇâ¸¸ ÀüÈ¯ -> ´ÙÀ½ ¾×¼Ç±îÁö 2ÃÊ ¿¬Àå
+    void Turn() // ì†ë„ëŠ” ìœ ì§€í•œì±„ë¡œ ë°©í–¥ë§Œ ì „í™˜ -> ë‹¤ìŒ ì•¡ì…˜ê¹Œì§€ 2ì´ˆ ì—°ì¥
     {
         nextMove *= -1;
         Animate();
@@ -66,7 +66,7 @@ public class EnemyController : MonoBehaviour
         Invoke("Think", 2);
     }
 
-    void Animate() // ½ºÇÁ¶óÀÌÆ® ¾Ö´Ï¸ŞÀÌ¼Ç °ü·Ã
+    void Animate() // ìŠ¤í”„ë¼ì´íŠ¸ ì• ë‹ˆë©”ì´ì…˜ ê´€ë ¨
     {
         anim.SetInteger("runSpeed", nextMove);
 
