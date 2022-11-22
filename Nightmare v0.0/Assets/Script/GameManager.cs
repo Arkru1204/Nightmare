@@ -20,16 +20,16 @@ public class GameManager : MonoBehaviour
             player.OnDead();
             StartCoroutine(Dead());
         }
-        if (hp < 0) // 인덱스 참조 오류 방지용
+        if (hp < 0) // 몃깆 李몄“ ㅻ 諛⑹
             return;
 
         hpAnim[hp].SetBool("isHpDestroy", true);
-        StartCoroutine(DestroyHp(hp)); // 매개변수 전달을 위해서 코루틴 사용
+        StartCoroutine(DestroyHp(hp)); // 留ㅺ蹂 �ъ 댁 肄猷⑦ ъ
     }
 
     IEnumerator DestroyHp(int i)
     {
-        yield return new WaitForSeconds(0.7f); // 0.8초 뒤 독립시행
+        yield return new WaitForSeconds(0.7f); // 0.8珥  由쎌
         hpUI[i].SetActive(false);
     }
 
