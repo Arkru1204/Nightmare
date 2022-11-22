@@ -71,7 +71,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1949896319
-  m_SortingLayer: 5
+  m_SortingLayer: 3
   m_SortingOrder: 0
   m_Sprite: {fileID: 640192952, guid: 820e3dd551a9b574abcfa34efc8d2fe0, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -218,9 +218,9 @@ GameObject:
   m_Component:
   - component: {fileID: 8840074153843859155}
   - component: {fileID: 5342514452028030320}
-  m_Layer: 10
+  m_Layer: 13
   m_Name: Detect Area
-  m_TagString: Untagged
+  m_TagString: Detect Area
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
