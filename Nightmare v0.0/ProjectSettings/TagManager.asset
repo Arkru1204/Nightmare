@@ -3,7 +3,12 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Enemy
+  - Trap
+  - Player Attack
+  - Detect Area
+  - Bullet
   layers:
   - Default
   - TransparentFX
@@ -11,14 +16,14 @@ TagManager:
   - 
   - Water
   - UI
+  - Background
   - Map
   - Player
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
+  - Super Armor
+  - Enemy
+  - Object
+  - Attack Area
+  - Detect Area
   - 
   - 
   - 
@@ -41,20 +46,23 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: Background
+    uniqueID: 1309869685
+    locked: 0
   - name: Map
     uniqueID: 754168893
     locked: 0
-  - name: Object
-    uniqueID: 1054624797
-    locked: 0
-  - name: Object
-    uniqueID: 673751499
-    locked: 0
-  - name: Monster
+  - name: Enemy
     uniqueID: 2345070977
     locked: 0
   - name: Player
     uniqueID: 822344811
+    locked: 0
+  - name: Object
+    uniqueID: 673751499
+    locked: 0
+  - name: Effect
+    uniqueID: 1054624797
     locked: 0
   - name: UI
     uniqueID: 3980502635
