@@ -222,7 +222,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bullet: {fileID: 162026, guid: c0ed0c94c6f15cb41be79b1988bf6911, type: 3}
-  offsetY: 1
+  throwX: 4
+  throwY: 0
+  offsetY: -0.4
 --- !u!1 &6523437627866948553
 GameObject:
   m_ObjectHideFlags: 0
@@ -279,5 +281,5 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 15, y: 15}
+  m_Size: {x: 18, y: 15}
   m_EdgeRadius: 0

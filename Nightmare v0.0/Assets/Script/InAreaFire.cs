@@ -2,10 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class InAreaFire : EnemyController
+public class InAreaFire : MonoBehaviour
 {
     public GameObject bullet;
-    public float offsetY = 1;
+
+    public float throwX = 4;
+    public float throwY = 0;
+    public float offsetY = 0;
 
     bool isArea = false;
     int dir = 0;
@@ -23,9 +26,12 @@ public class InAreaFire : EnemyController
         {
             isArea = true;
             StartCoroutine(OnFire(collision.transform.position));
-
-            Debug.Log("in");
         }
+    }
+
+    private void OnTriggerStay2D(Collider2D collision)
+    {
+        dir = transform.position.x - collision.transform.position.x > 0 ? -1 : 1;
     }
 
     private void OnTriggerExit2D(Collider2D collision)
@@ -38,8 +44,7 @@ public class InAreaFire : EnemyController
     {
         while (isArea)
         {
-            yield return new WaitForSeconds(2f);
-            dir = transform.position.x - targetPos.x > 0 ? 1 : -1;
+            yield return new WaitForSeconds(3f);
             anim.SetTrigger("doAttack");
         }
     }
@@ -51,8 +56,11 @@ public class InAreaFire : EnemyController
         newPos.y += offsetY;
 
         GameObject newGameObject = Instantiate(bullet) as GameObject;
-        newPos.z = -5;
+        //newPos.z = -5;
         newGameObject.transform.position = newPos;
         newGameObject.transform.localScale = new Vector3(newGameObject.transform.localScale.y * dir, newGameObject.transform.localScale.y, newGameObject.transform.localScale.z);
+
+        Rigidbody2D rbody = newGameObject.GetComponent<Rigidbody2D>();
+        rbody.AddForce(new Vector2(throwX * dir, throwY), ForceMode2D.Impulse);
     }
 }
