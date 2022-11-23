@@ -21,13 +21,19 @@ public class EnemyMain : MonoBehaviour
         spriteRenderer = GetComponentInChildren<SpriteRenderer>();
     }
 
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.tag == "Bullet")
+            OnHit(collision.transform.position);
+    }
+
     void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.tag == "Player Attack")
-            onHit(collision.transform.position);
+            OnHit(collision.transform.position);
     }
 
-    void onHit(Vector2 targetPos)
+    void OnHit(Vector2 targetPos)
     {
         isHit = true;
         gameObject.layer = 9; // Super Armor Layer
