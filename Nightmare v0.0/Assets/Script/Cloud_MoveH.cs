@@ -5,7 +5,6 @@ using UnityEngine;
 public class Cloud_MoveH : MonoBehaviour
 {
     public float speed = 1;
-
     public int maxCount = 100;
     int count = 0;
 
@@ -21,7 +20,7 @@ public class Cloud_MoveH : MonoBehaviour
         
     }
 
-    private void FixedUpdate()
+    void FixedUpdate()
     {
         count += 1;
 
