@@ -6,9 +6,19 @@ public class InAreaFire : MonoBehaviour
 {
     public GameObject bullet;
 
+    public float throwX = 4;
+    public float throwY = 0;
+    public float offsetY = 0;
+
     bool isArea = false;
+    int dir = 0;
 
+    Animator anim;
 
+    private void Awake()
+    {
+        anim = GetComponent<Animator>();
+    }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -19,6 +29,11 @@ public class InAreaFire : MonoBehaviour
         }
     }
 
+    private void OnTriggerStay2D(Collider2D collision)
+    {
+        dir = transform.position.x - collision.transform.position.x > 0 ? -1 : 1;
+    }
+
     private void OnTriggerExit2D(Collider2D collision)
     {
         if (collision.gameObject.tag == "Player")
@@ -27,10 +42,25 @@ public class InAreaFire : MonoBehaviour
 
     IEnumerator OnFire(Vector2 targetPos)
     {
-        while (!isArea)
+        while (isArea)
         {
-            yield return new WaitForSeconds(1f);
-            int dir = transform.position.x - targetPos.x > 0 ? 1 : -1;
+            yield return new WaitForSeconds(3f);
+            anim.SetTrigger("doAttack");
         }
+    }
+
+    void Fire()
+    {
+        //Vector3 area = this.GetComponentInChildren<SpriteRenderer>().bounds.size;
+        Vector3 newPos = this.transform.position;
+        newPos.y += offsetY;
+
+        GameObject newGameObject = Instantiate(bullet) as GameObject;
+        //newPos.z = -5;
+        newGameObject.transform.position = newPos;
+        newGameObject.transform.localScale = new Vector3(newGameObject.transform.localScale.y * dir, newGameObject.transform.localScale.y, newGameObject.transform.localScale.z);
+
+        Rigidbody2D rbody = newGameObject.GetComponent<Rigidbody2D>();
+        rbody.AddForce(new Vector2(throwX * dir, throwY), ForceMode2D.Impulse);
     }
 }
