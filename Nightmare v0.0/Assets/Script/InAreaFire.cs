@@ -31,12 +31,13 @@ public class InAreaFire : MonoBehaviour
 
     private void OnTriggerStay2D(Collider2D collision)
     {
-        dir = transform.position.x - collision.transform.position.x > 0 ? -1 : 1;
+        if (collision.gameObject.tag == "Player") // 플레이어 위치가 변경되면 방향 확인
+            dir = transform.position.x - collision.transform.position.x > 0 ? -1 : 1;
     }
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        if (collision.gameObject.tag == "Player")
+        if (collision.gameObject.tag == "Player") // 플레이어가 나가면 발사 중지
             isArea = false;
     }
 
