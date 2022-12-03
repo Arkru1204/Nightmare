@@ -37,6 +37,12 @@ public class PlayerMain : MonoBehaviour
             OnHit(collision.transform.position);
     }
 
+    void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.tag == "Enemy Attack")
+            OnHit(collision.transform.position);
+    }
+
     void OnHit(Vector2 targetPos)
     {
         gameObject.layer = 9; // Super Armor Layer

@@ -2,14 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class InAreaFire : MonoBehaviour
+public class InAreaAttack_BossA : MonoBehaviour
 {
-    public GameObject bullet;
-
-    public float throwX = 4;
-    public float throwY = 0;
-    public float offsetY = 0;
-
     bool isArea = false;
     int playerDir = 0;
 
@@ -47,8 +41,8 @@ public class InAreaFire : MonoBehaviour
     {
         while (isArea)
         {
-            yield return new WaitForSeconds(3f);
-            anim.SetTrigger("doAttack");
+            yield return new WaitForSeconds(1.7f);
+            anim.SetTrigger("doNomalAttack");
         }
     }
 
@@ -63,16 +57,16 @@ public class InAreaFire : MonoBehaviour
                 enemyController.lookBack();
         }
 
-        //Vector3 area = this.GetComponentInChildren<SpriteRenderer>().bounds.size;
-        Vector3 newPos = this.transform.position;
-        newPos.y += offsetY;
+        ////Vector3 area = this.GetComponentInChildren<SpriteRenderer>().bounds.size;
+        //Vector3 newPos = this.transform.position;
+        //newPos.y += offsetY;
 
-        GameObject newGameObject = Instantiate(bullet) as GameObject;
-        //newPos.z = -5;
-        newGameObject.transform.position = newPos;
-        newGameObject.transform.localScale = new Vector3(newGameObject.transform.localScale.y * playerDir, newGameObject.transform.localScale.y, newGameObject.transform.localScale.z);
+        //GameObject newGameObject = Instantiate(bullet) as GameObject;
+        ////newPos.z = -5;
+        //newGameObject.transform.position = newPos;
+        //newGameObject.transform.localScale = new Vector3(newGameObject.transform.localScale.y * playerDir, newGameObject.transform.localScale.y, newGameObject.transform.localScale.z);
 
-        Rigidbody2D rbody = newGameObject.GetComponent<Rigidbody2D>();
-        rbody.AddForce(new Vector2(throwX * playerDir, throwY), ForceMode2D.Impulse);
+        //Rigidbody2D rbody = newGameObject.GetComponent<Rigidbody2D>();
+        //rbody.AddForce(new Vector2(throwX * playerDir, throwY), ForceMode2D.Impulse);
     }
 }
