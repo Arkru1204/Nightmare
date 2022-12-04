@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class InAreaAttack_BossA : MonoBehaviour
 {
+    public float attackDelay = 1.5f;
+
     bool isArea = false;
     int playerDir = 0;
 
@@ -21,7 +23,7 @@ public class InAreaAttack_BossA : MonoBehaviour
         if (collision.gameObject.tag == "Player")
         {
             isArea = true;
-            StartCoroutine(OnFire(collision.transform.position));
+            OnFire(collision.transform.position);
         }
     }
 
@@ -34,39 +36,27 @@ public class InAreaAttack_BossA : MonoBehaviour
     private void OnTriggerExit2D(Collider2D collision)
     {
         if (collision.gameObject.tag == "Player") // 플레이어가 나가면 발사 중지
+        {
             isArea = false;
+            CancelInvoke("OnFire");
+        }
     }
 
-    IEnumerator OnFire(Vector2 targetPos)
+    void OnFire(Vector2 targetPos)
     {
-        while (isArea)
+        if (isArea)
         {
-            yield return new WaitForSeconds(1.7f);
+            if (playerDir != enemyController.getDir()) // 플레이어 위치와 에너미 진행 방향이랑 다르면
+            {
+                enemyController.Turn();
+
+                if (enemyController.getThink() == 0) // 멈춰 있다면
+                    enemyController.lookBack();
+            }
+
             anim.SetTrigger("doNomalAttack");
+
+            Invoke("OnFire", attackDelay);
         }
-    }
-
-    void Fire()
-    {
-        Debug.Log("플레이어 dir은 " + playerDir + ", 에너미 dir은" + enemyController.getDir());
-        if (playerDir != enemyController.getDir()) // 플레이어 위치와 에너미 진행 방향이랑 다르면
-        {
-            enemyController.Turn();
-
-            if (enemyController.getThink() == 0) // 멈춰 있다면
-                enemyController.lookBack();
-        }
-
-        ////Vector3 area = this.GetComponentInChildren<SpriteRenderer>().bounds.size;
-        //Vector3 newPos = this.transform.position;
-        //newPos.y += offsetY;
-
-        //GameObject newGameObject = Instantiate(bullet) as GameObject;
-        ////newPos.z = -5;
-        //newGameObject.transform.position = newPos;
-        //newGameObject.transform.localScale = new Vector3(newGameObject.transform.localScale.y * playerDir, newGameObject.transform.localScale.y, newGameObject.transform.localScale.z);
-
-        //Rigidbody2D rbody = newGameObject.GetComponent<Rigidbody2D>();
-        //rbody.AddForce(new Vector2(throwX * playerDir, throwY), ForceMode2D.Impulse);
     }
 }

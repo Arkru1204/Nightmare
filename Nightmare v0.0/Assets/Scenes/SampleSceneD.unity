@@ -23096,7 +23096,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f922bea391052e7419d95b4859b06569, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  stageNum: 3
+  stageNum: 4
 --- !u!70 &4450054097123728682
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -23304,7 +23304,7 @@ GameObject:
   - component: {fileID: 3319968050819115133}
   m_Layer: 8
   m_Name: Player Sprite
-  m_TagString: Player
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

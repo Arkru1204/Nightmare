@@ -9,6 +9,7 @@ TagManager:
   - Player Attack
   - Detect Area
   - Bullet
+  - Enemy Attack
   layers:
   - Default
   - TransparentFX
@@ -22,11 +23,11 @@ TagManager:
   - Super Armor
   - Enemy
   - Object
-  - Attack Area
+  - Player Attack Area
   - Detect Area
   - Enemy Bullet
   - Player Bullet
-  - 
+  - Enemy Attack Area
   - 
   - 
   - 
