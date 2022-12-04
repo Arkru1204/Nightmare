@@ -58,6 +58,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3320711768257787134}
   - component: {fileID: 5062486993590755660}
+  - component: {fileID: 6709220704095416976}
   m_Layer: 13
   m_Name: Detect Area
   m_TagString: Detect Area
@@ -104,8 +105,20 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 14.639847, y: 10.52613}
+  m_Size: {x: 13.819112, y: 8.816031}
   m_EdgeRadius: 0
+--- !u!114 &6709220704095416976
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2896189034747214212}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9ad15a9d7861be140aff4f5175a47eb8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &6859920866059240804
 GameObject:
   m_ObjectHideFlags: 0
@@ -203,8 +216,7 @@ GameObject:
   - component: {fileID: 6859920867301134115}
   - component: {fileID: 6859920867301134117}
   - component: {fileID: 6859920867301134118}
-  - component: {fileID: 6859920867301134121}
-  - component: {fileID: 2029914983}
+  - component: {fileID: 1340792815482485151}
   m_Layer: 10
   m_Name: BossA
   m_TagString: Enemy
@@ -302,7 +314,7 @@ MonoBehaviour:
   hp: 10
   bouncPower: 2
   invulnTime: 0.5
---- !u!114 &6859920867301134121
+--- !u!114 &1340792815482485151
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -311,21 +323,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 6859920867301134113}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a585b2ed03b572145aac3f40c36f70f6, type: 3}
+  m_Script: {fileID: 11500000, guid: 981a422c3fdef224bb417e6b61753e79, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   maxSpeed: 1
   raycastDistance: 4
---- !u!114 &2029914983
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6859920867301134113}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0ba49bca0312f834cb3586a88c9fbf8d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  attackDelay: 3
+  attackDelay: 2
