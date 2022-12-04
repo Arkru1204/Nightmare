@@ -34,13 +34,20 @@ public class InAreaFire : MonoBehaviour
     private void OnTriggerStay2D(Collider2D collision)
     {
         if (collision.gameObject.tag == "Player") // 플레이어 위치가 변경되면 방향 확인
+        {
             playerDir = transform.position.x - collision.transform.position.x > 0 ? -1 : 1; // -1 왼쪽, 1 오른쪽
+        }
+            
     }
 
     private void OnTriggerExit2D(Collider2D collision)
     {
         if (collision.gameObject.tag == "Player") // 플레이어가 나가면 발사 중지
+        {
             isArea = false;
+            StopCoroutine("OnFire");
+        }
+            
     }
 
     IEnumerator OnFire(Vector2 targetPos)
@@ -49,20 +56,20 @@ public class InAreaFire : MonoBehaviour
         {
             yield return new WaitForSeconds(3f);
 
-            if (playerDir != enemyController.getDir()) // 플레이어 위치와 에너미 진행 방향이랑 다르면
-            {
-                enemyController.Turn();
-
-                if (enemyController.getThink() == 0) // 멈춰 있다면
-                    enemyController.lookBack();
-            }
-
             anim.SetTrigger("doAttack");
         }
     }
 
     void Fire() // 애니메이션에서 호출
     {
+        if (playerDir != enemyController.getDir()) // 플레이어 위치와 에너미 진행 방향이랑 다르면
+        {
+            enemyController.Turn();
+
+            if (enemyController.getThink() == 0) // 멈춰 있다면
+                enemyController.lookBack();
+        }
+
         //Vector3 area = this.GetComponentInChildren<SpriteRenderer>().bounds.size;
         Vector3 newPos = this.transform.position;
         newPos.y += offsetY;
