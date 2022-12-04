@@ -105,7 +105,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 13.819112, y: 8.816031}
+  m_Size: {x: 10.747147, y: 8.816031}
   m_EdgeRadius: 0
 --- !u!114 &6709220704095416976
 MonoBehaviour:
@@ -215,7 +215,7 @@ GameObject:
   - component: {fileID: 6859920867301134114}
   - component: {fileID: 6859920867301134115}
   - component: {fileID: 6859920867301134117}
-  - component: {fileID: 6859920867301134118}
+  - component: {fileID: 6147987783178287628}
   - component: {fileID: 1340792815482485151}
   m_Layer: 10
   m_Name: BossA
@@ -298,8 +298,8 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
---- !u!114 &6859920867301134118
+  m_Constraints: 4
+--- !u!114 &6147987783178287628
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -308,10 +308,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 6859920867301134113}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fb2cbb9c1f233684e92827adbd19c8b2, type: 3}
+  m_Script: {fileID: 11500000, guid: 8f054c20484600543bc5d32ee5b03ffe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hp: 10
+  bossManager: {fileID: 0}
+  hp: 20
   bouncPower: 2
   invulnTime: 0.5
 --- !u!114 &1340792815482485151
@@ -327,5 +328,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxSpeed: 1
-  raycastDistance: 4
+  raycastDistance: 5
   attackDelay: 2

@@ -2,10 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyMain : MonoBehaviour
+public class BossMain : MonoBehaviour
 {
-    public int hp = 2;
-    public float bouncPower = 3f;
+    public BossManager bossManager;
+
+    public int hp = 20;
+    public float bouncPower = 2f;
     public float invulnTime = 0.5f;
 
     bool isHit = false;
@@ -52,6 +54,8 @@ public class EnemyMain : MonoBehaviour
         if (hp == 0)
             StartCoroutine(Dead());
 
+        bossManager.BossHpDown();
+
         Invoke("OffHit", invulnTime);
     }
 
@@ -66,6 +70,7 @@ public class EnemyMain : MonoBehaviour
     IEnumerator Dead()
     {
         yield return new WaitForSeconds(0.35f);
+        bossManager.BossDead();
         Destroy(gameObject);
     }
 
