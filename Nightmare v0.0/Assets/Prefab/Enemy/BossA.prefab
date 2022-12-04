@@ -300,7 +300,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hp: 10
-  bouncPower: 3
+  bouncPower: 2
   invulnTime: 0.5
 --- !u!114 &6859920867301134121
 MonoBehaviour:
@@ -314,7 +314,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a585b2ed03b572145aac3f40c36f70f6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxSpeed: 2.5
+  maxSpeed: 1
   raycastDistance: 4
 --- !u!114 &2029914983
 MonoBehaviour:
@@ -328,3 +328,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0ba49bca0312f834cb3586a88c9fbf8d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  attackDelay: 1.5

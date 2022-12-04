@@ -48,21 +48,21 @@ public class InAreaFire : MonoBehaviour
         while (isArea)
         {
             yield return new WaitForSeconds(3f);
+
+            if (playerDir != enemyController.getDir()) // 플레이어 위치와 에너미 진행 방향이랑 다르면
+            {
+                enemyController.Turn();
+
+                if (enemyController.getThink() == 0) // 멈춰 있다면
+                    enemyController.lookBack();
+            }
+
             anim.SetTrigger("doAttack");
         }
     }
 
-    void Fire()
+    void Fire() // 애니메이션에서 호출
     {
-        Debug.Log("플레이어 dir은 " + playerDir + ", 에너미 dir은" + enemyController.getDir());
-        if (playerDir != enemyController.getDir()) // 플레이어 위치와 에너미 진행 방향이랑 다르면
-        {
-            enemyController.Turn();
-
-            if (enemyController.getThink() == 0) // 멈춰 있다면
-                enemyController.lookBack();
-        }
-
         //Vector3 area = this.GetComponentInChildren<SpriteRenderer>().bounds.size;
         Vector3 newPos = this.transform.position;
         newPos.y += offsetY;
