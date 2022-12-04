@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class InAreaAttack_BossA : MonoBehaviour
 {
-    public float attackDelay = 1.5f;
+    public float attackDelay = 2f;
 
     bool isArea = false;
     int playerDir = 0;
@@ -23,7 +23,8 @@ public class InAreaAttack_BossA : MonoBehaviour
         if (collision.gameObject.tag == "Player")
         {
             isArea = true;
-            OnFire(collision.transform.position);
+
+            StartCoroutine(OnFire());
         }
     }
 
@@ -38,14 +39,16 @@ public class InAreaAttack_BossA : MonoBehaviour
         if (collision.gameObject.tag == "Player") // 플레이어가 나가면 발사 중지
         {
             isArea = false;
-            CancelInvoke("OnFire");
+            StopCoroutine("OnFire");
         }
     }
 
-    void OnFire(Vector2 targetPos)
+    IEnumerator OnFire()
     {
-        if (isArea)
+        while (isArea)
         {
+            yield return new WaitForSeconds(attackDelay);
+
             if (playerDir != enemyController.getDir()) // 플레이어 위치와 에너미 진행 방향이랑 다르면
             {
                 enemyController.Turn();
@@ -55,8 +58,6 @@ public class InAreaAttack_BossA : MonoBehaviour
             }
 
             anim.SetTrigger("doNomalAttack");
-
-            Invoke("OnFire", attackDelay);
         }
     }
 }
