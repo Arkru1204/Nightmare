@@ -4,14 +4,17 @@ using UnityEngine;
 
 public class InArea : MonoBehaviour
 {
+    bool aggro = false;
     bool isArea = false;
     int playerDir = 0;
+    Vector3 exitPos;
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.tag == "Player")
         {
             isArea = true;
+            aggro = true;
         }
     }
 
@@ -29,7 +32,13 @@ public class InArea : MonoBehaviour
         if (collision.gameObject.tag == "Player") // 플레이어가 나가면 발사 중지
         {
             isArea = false;
+            exitPos = collision.transform.position;
         }
+    }
+
+    public bool getAggro()
+    {
+        return aggro;
     }
 
     public bool getIsArea()
@@ -40,5 +49,10 @@ public class InArea : MonoBehaviour
     public int getPlayerDir()
     {
         return playerDir;
+    }
+
+    public Vector3 getExitPos()
+    {
+        return exitPos;
     }
 }

@@ -10,6 +10,7 @@ TagManager:
   - Detect Area
   - Bullet
   - Enemy Attack
+  - Encounter
   layers:
   - Default
   - TransparentFX

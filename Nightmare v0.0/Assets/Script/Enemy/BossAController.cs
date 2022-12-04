@@ -5,26 +5,26 @@ using UnityEngine;
 public class BossAController : MonoBehaviour
 {
     public float maxSpeed = 1f;
-    public float raycastDistance = 4f;
+    public float raycastDistance = 5f;
     public float attackDelay = 2f;
 
     int saveDir = 1;
  
     bool isAttack = false;
-
+    bool isJump = false;
 
     int nextMove; // 행동 지표를 결정할 변수 하나 생성
 
     Rigidbody2D rigid;
     Animator anim;
-    EnemyMain enemyMain;
+    BossMain bossMain;
     InArea inArea;
 
     void Awake()
     {
         rigid = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
-        enemyMain = GetComponent<EnemyMain>();
+        bossMain = GetComponent<BossMain>();
         inArea = GetComponentInChildren<InArea>();
 
         Invoke("Think", 3); // 주어진 시간이 지난뒤 지정된 함수를 실행하는 함수 
@@ -32,21 +32,28 @@ public class BossAController : MonoBehaviour
 
     private void Update()
     {
-        if (inArea.getIsArea() && !anim.GetCurrentAnimatorStateInfo(0).IsName("BossA_NomalAttack") && isAttack == false)
+        if (inArea.getIsArea() && !IsInvoking("AttackEnd")) // 공격
         {
-            Invoke("OnFire", attackDelay);
+            Invoke("OnAttack", attackDelay);
         }
 
-        if (!inArea.getIsArea())
+        if (!inArea.getIsArea() && inArea.getAggro()) // 영역 밖이지만 어글이 있을 때
         {
-            CancelInvoke("OnFire");
-            anim.SetBool("doNomalAttack", false);
+            CancelInvoke("OnAttack");
+            //anim.SetBool("doNomalAttack", false);
+
+            Invoke("OnJump", attackDelay);
+
+            //if (Random.Range(0, 10) == 0) // 0 ~ 9
+            //{
+            //    Invoke("OnJump", attackDelay * 2);
+            //}
         }
     }
 
     void FixedUpdate()
     {
-        if (!enemyMain.IsHit() && !anim.GetCurrentAnimatorStateInfo(0).IsName("BossA_NomalAttack"))
+        if (!bossMain.IsHit() && !IsInvoking("AttackEnd"))
         {
             rigid.velocity = new Vector2(nextMove * maxSpeed, rigid.velocity.y);
 
@@ -59,19 +66,26 @@ public class BossAController : MonoBehaviour
                 Turn();
         }
 
-        if (anim.GetCurrentAnimatorStateInfo(0).IsName("BossA_NomalAttack")) // 공격 시 멈춤
+        if (IsInvoking("AttackEnd")) // 공격 시 이동 멈춤
             rigid.velocity = new Vector2(rigid.velocity.normalized.x * 0.0000001f, rigid.velocity.y);
 
         if (isAttack)
         {
             isAttack = false;
-            Invoke("AttackEnd", 1.4f);
+            Invoke("AttackEnd", 1.4f); // 애니메이션 끝나는 시간
+        }
+
+        if (isJump)
+        {
+            isJump = false;
+            Invoke("AttackEnd", 3.1f);
         }
     }
 
+    // ======================== 기본 이동 AI =======================
     void Think()
     {
-        if (!enemyMain.IsHit() && isAttack == false)
+        if (!bossMain.IsHit())
         {
             Move();
 
@@ -110,7 +124,8 @@ public class BossAController : MonoBehaviour
         //spriteRenderer.flipX = nextMove == 1;
     }
 
-    void OnFire()
+    // ======================== 공격 함수 ========================
+    void OnAttack()
     {
         if (inArea.getIsArea())
         {
@@ -120,11 +135,24 @@ public class BossAController : MonoBehaviour
         }
     }
 
+    void OnJump()
+    {
+        if (!inArea.getIsArea())
+        {
+            isJump = true;
+            transform.localScale = new Vector3(Mathf.Abs(transform.localScale.x) * -inArea.getPlayerDir(), transform.localScale.y, transform.localScale.z);
+            anim.SetBool("doJumpAttack", true);
+        }
+    }
+
+    public void movePosX()
+    {
+        transform.position = new Vector3(inArea.getExitPos().x, transform.position.y, transform.position.z);
+    }
+
     public void AttackEnd()
     {
-        //Debug.Log("attack End!");
         anim.SetBool("doNomalAttack", false);
-
-        //Invoke("OnFire", attackDelay);
+        anim.SetBool("doJumpAttack", false);
     }
 }

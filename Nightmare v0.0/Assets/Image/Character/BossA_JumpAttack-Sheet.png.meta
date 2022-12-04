@@ -70,7 +70,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 1
+    textureCompression: 0
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -209,6 +209,27 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
+    - serializedVersion: 2
+      name: BossA_JumpAttack-Sheet_5
+      rect:
+        serializedVersion: 2
+        x: 1920
+        y: 0
+        width: 384
+        height: 384
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d69fdbde4d74dce429177b98f6389526
+      internalID: 495794112
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
@@ -222,6 +243,7 @@ TextureImporter:
     nameFileIdTable:
       BossA_JumpAttack-Sheet_3: -2094849122
       BossA_JumpAttack-Sheet_0: -799856369
+      BossA_JumpAttack-Sheet_5: 495794112
       BossA_JumpAttack-Sheet_4: 2105035742
       BossA_JumpAttack-Sheet_1: 66172984
       BossA_JumpAttack-Sheet_2: -627896982
