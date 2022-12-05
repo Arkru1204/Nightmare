@@ -8,6 +8,7 @@ public class InArea : MonoBehaviour
     bool isArea = false;
     int playerDir = 0;
     Vector3 exitPos;
+    Vector3 playerPos;
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -15,6 +16,7 @@ public class InArea : MonoBehaviour
         {
             isArea = true;
             aggro = true;
+            playerPos = collision.transform.position;
         }
     }
 
@@ -24,6 +26,7 @@ public class InArea : MonoBehaviour
         {
             playerDir = transform.position.x - collision.transform.position.x > 0 ? -1 : 1; // -1 왼쪽, 1 오른쪽
             isArea = true;
+            playerPos = collision.transform.position;
         }
     }
 
@@ -54,5 +57,10 @@ public class InArea : MonoBehaviour
     public Vector3 getExitPos()
     {
         return exitPos;
+    }
+
+    public Vector3 getPlayerPos()
+    {
+        return playerPos;
     }
 }
