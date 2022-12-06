@@ -11811,6 +11811,7 @@ MonoBehaviour:
   boss: {fileID: 347043694}
   bossUI: {fileID: 1637155768}
   bossHpBar: {fileID: 1452248076}
+  bossArea: []
 --- !u!1 &401858648
 GameObject:
   m_ObjectHideFlags: 0
