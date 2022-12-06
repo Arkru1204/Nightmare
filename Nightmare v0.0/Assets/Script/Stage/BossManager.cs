@@ -8,6 +8,7 @@ public class BossManager : MonoBehaviour
     public BossMain boss;
     public GameObject bossUI;
     public Scrollbar bossHpBar;
+    public GameObject[] bossArea;
 
     float setHp = 0;
 
@@ -26,5 +27,7 @@ public class BossManager : MonoBehaviour
     public void BossDead()
     {
         bossUI.SetActive(false);
+        bossArea[0].SetActive(false);
+        bossArea[1].SetActive(false);
     }
 }
