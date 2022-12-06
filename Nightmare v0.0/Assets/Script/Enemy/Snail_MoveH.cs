@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Cloud_MoveH : MonoBehaviour
+public class Snail_MoveH : MonoBehaviour
 {
     public float speed = 1;
     public int maxCount = 100;
