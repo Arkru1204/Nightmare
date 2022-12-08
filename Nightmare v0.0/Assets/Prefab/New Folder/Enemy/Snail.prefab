@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 7684022197862964229}
   - component: {fileID: 7684022197862964228}
   - component: {fileID: 7684022197862964231}
+  - component: {fileID: 8731184457877635934}
   m_Layer: 10
   m_Name: Snail
   m_TagString: Enemy
@@ -149,7 +150,7 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 0
+  m_GravityScale: 1
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
@@ -169,3 +170,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 2
   maxCount: 200
+--- !u!114 &8731184457877635934
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7684022197862964227}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fb2cbb9c1f233684e92827adbd19c8b2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hp: 2
+  bouncPower: 3
+  invulnTime: 0.5

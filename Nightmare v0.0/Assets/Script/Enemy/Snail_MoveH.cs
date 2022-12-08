@@ -28,6 +28,7 @@ public class Snail_MoveH : MonoBehaviour
         {
             count = 0;
             speed *= -1;
+            this.transform.localScale = new Vector3(transform.localScale.x * -1, transform.localScale.y, transform.localScale.z);
         }
 
         this.transform.Translate(speed / 50, 0, 0);

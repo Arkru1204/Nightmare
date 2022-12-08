@@ -27,6 +27,15 @@ public class GameManager : MonoBehaviour
         StartCoroutine(DestroyHp(hp)); // 매개변수 전달을 위해서 코루틴 사용
     }
 
+    public void HpUp()
+    {
+        if (hp < 3)
+        {
+            hp++;
+            hpUI[hp - 1].SetActive(true);
+        }
+    }
+
     IEnumerator DestroyHp(int i)
     {
         yield return new WaitForSeconds(0.7f); // 0.8초 뒤 독립시행

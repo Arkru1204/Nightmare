@@ -5,6 +5,7 @@ using UnityEngine;
 public class BulletController : MonoBehaviour
 {
     public GameObject newPrefab;
+    public bool isTurn = true;
 
     public float throwX = 4;
     public float throwY = 0;
@@ -17,11 +18,16 @@ public class BulletController : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.tag == "Player Attack")
-            turn(collision.transform.position);
+        if (collision.gameObject.tag == "Player Attack" && isTurn)
+            Turn(collision.transform.position);
+        else if (collision.gameObject.tag == "Player Attack" && !isTurn)
+        {
+            CreatePrefab();
+            Destroy(this.gameObject);
+        }
     }
 
-    void turn(Vector2 targetPos)
+    void Turn(Vector2 targetPos)
     {
         gameObject.layer = 15;
         transform.localScale = new Vector3(transform.localScale.x * -1, transform.localScale.y, transform.localScale.z);
