@@ -12,6 +12,12 @@ public class GameManager : MonoBehaviour
     public Animator[] hpAnim;
     public GameObject restartButton;
 
+    private void Awake()
+    {
+        hpUI[3].SetActive(false);
+        hpUI[4].SetActive(false);
+    }
+
     public void HpDown()
     {
         hp--;
@@ -29,7 +35,7 @@ public class GameManager : MonoBehaviour
 
     public void HpUp()
     {
-        if (hp < 3)
+        if (hp < 5)
         {
             hp++;
             hpUI[hp - 1].SetActive(true);
