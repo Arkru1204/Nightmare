@@ -1,5 +1,7 @@
-![스크린샷 2023-10-18 181306](https://github.com/Arkru1204/Nightmare/assets/35932023/92ceb891-fcfc-4541-97ee-3beb55899b65)# Nightmare
+# Nightmare
 3학년 2학기 기말 과제<br>
+
+[![멎은꿈 플레이영상](https://github.com/Arkru1204/Nightmare/assets/35932023/6fd920be-2084-4a29-bf38-e6b654591691)](https://youtu.be/1TQBWoCjobw?si=gKagoaTpK3pKRpzl) 
 
 ![슬라이드1](https://github.com/Arkru1204/Nightmare/assets/35932023/29563171-240e-445f-98cd-77b542732a18)
 
@@ -47,7 +49,7 @@
 
 ![슬라이드23](https://github.com/Arkru1204/Nightmare/assets/35932023/2d6d3afe-7633-46e4-8ec5-8f373a49b4e2)
 
-[![멎은꿈 플레이영상](http://img.youtube.com/vi/1TQBWoCjobw?si=gKagoaTpK3pKRpzl/0.jpg)](https://youtu.be/1TQBWoCjobw?si=gKagoaTpK3pKRpzl) 
+![슬라이드31](https://github.com/Arkru1204/Nightmare/assets/35932023/d9ef1af3-7b9b-481e-a54e-219ff7ea2b0a)
 
 https://github.com/Arkru1204/Nightmare/assets/35932023/3b4f6959-b860-41dc-932a-3ab57a683bb5
 
