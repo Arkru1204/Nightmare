@@ -1,8 +1,11 @@
 # Nightmare
-3학년 2학기 기말 과제<br>
+3학년 2학기 기말 과제<br><br>
 
-[![멎은꿈 플레이영상](https://github.com/Arkru1204/Nightmare/assets/35932023/6fd920be-2084-4a29-bf38-e6b654591691)](https://youtu.be/1TQBWoCjobw?si=gKagoaTpK3pKRpzl) 
+## 플레이 영상
+[![멎은꿈 플레이영상](http://img.youtube.com/vi/1TQBWoCjobw/0.jpg)](https://youtu.be/1TQBWoCjobw)
 
+<br><br>
+## 발표자료
 ![슬라이드1](https://github.com/Arkru1204/Nightmare/assets/35932023/29563171-240e-445f-98cd-77b542732a18)
 
 ![슬라이드2](https://github.com/Arkru1204/Nightmare/assets/35932023/b7f439db-b1da-4745-b137-0989b60ea4c5)
