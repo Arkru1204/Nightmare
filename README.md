@@ -1,5 +1,6 @@
 # Nightmare
-3학년 2학기 기말 과제<br><br>
+3학년 2학기 기말 과제<br>
+2D 플랫포머 어드벤처<br><br>
 
 ## 플레이 영상
 [![멎은꿈 플레이영상](http://img.youtube.com/vi/1TQBWoCjobw/0.jpg)](https://youtu.be/1TQBWoCjobw)
